@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모바일 웹개발</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <h1>✏️ < 모바일 웹개발 > </h1>
+        <div class="container">
+            <h2>📍 모바일 데스크탑 웹개발의 차이점들</h2>
+            <ul class="pl-2 list-in">
+                <li>모바일웹의 JavaScript,HTML,CSS는 Desktop과 동일</li>
+                <li>마우스와 키보드대신 손가락이 있음</li>
+                <li>모바일은 화면이 작음</li>
+                <li>기기의 성능이 상대적으로 좋지 않음</li>
+            </ul>
+            <h2>📍 모바일 브라우저의 특징</h2>
+            <ul class="pl-2 list-in">
+                <li>작음</li>
+                <li>고정. resize 불가. (확대, 축소 가능)</li>
+                <li>마우스와 다르게 터치 가능</li>
+            </ul>
+        </div>
+        <div class="container">
+            <h2>📍 사용자가 모바일로 접속했는지 알 수 있는 방법</h2>
+            <ul>
+                <li>
+                    <h3>1. script로 pixel ratio의 값이 1보다 크다면 모바일화면으로 보고 있다는 것을 알 수 있다.</h3>
+                    <img class="pl-2" src="./img/screen1.jpg" alt="">
+                </li>
+                <li>
+                    <h3>2. Modernizr 사용</h3>
+                    <ul>
+                        <li>Modernizr는 cross browsing을 위해 필요하다.</li>
+                        <li>
+                            touch event가 적용되면 모바일에서 이용하는 것으로 본다.
+                            <p>
+                                다운로드 -> 찾아볼 기능 검색 -> +를 누르면 우측에 view examples이 나옴. <br>
+                                하지만 모든 기능을 찾아서 +해서 사용할 수 없으니 <br>
+                                Modernizr cdn을 사용해서 script src를 넣어준다음 아래 코드 넣어준다.
+                            </p>
+                            <img src="./img/screen2.jpg" alt="">
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>3. navigator.userAgent로 모바일 기기 감지</h3>
+                    <a href="https://www.youtube.com/watch?v=1O13X68nrSs" target="_blank">https://www.youtube.com/watch?v=1O13X68nrSs</a>
+                </li>
+            </ul>
+        </div>
+        <div class="container touchevent">
+            <h2>📍 Touch Event</h2>
+            <ul class="list-in">
+                <li>
+                    모바일 디바이스 브라우저에서는 touch 이벤트를 사용
+                    <P class="box-bg">
+                        touchstart => touchmove => touchend
+                        <span class="color-b">(mousedown => mousemove => mouseup)</span>
+                    </p>
+                </li>
+                <li class="mb-no">
+                    이벤트 등록은 다음과 같이 PC브라우저에서 적용한 방식과 동일함
+                    <img class="pl-2" src="./img/screen3.jpg" alt="">
+                </li>
+                <li>touch EventListener에 전달되는 event객체에는 target 속성과 <br> <strong>touches와 changedTouches</strong> 라는 하위 속성 내제</li>
+                <li>
+                    touches와 changedTouches
+                    <p>
+                        두 개의 값은 배열타입. 그 이유는 하나뿐인 마우스 포인터만 있는 PC와 다르게, <br> 
+                        모바일 기기에서는 1개 이상의 터치영역이 생기기 때문. (손가락이 여러개이므로)
+                        <span>때문에 어떤 손가락은 touchstart이고 어떤 손가락은 touchmove중인 상태가 발생 된다.</span>
+                    </p>
+                </li>
+                <li>
+                    touches
+                    <p>: 모든 touch 이벤트</p>
+                </li>
+                <li>
+                    changedTouches
+                    <p>: 이전대비 현재 변화가 일어난 모든 이벤트</p>
+                </li>
+                <li>[ touchstart 와 touchend 에서 ] changedTouches 는 언제나 1개만 들어옴</li>
+                <li>
+                    [ changedTouches 가 여러 개 들어오는 상황은 ] touchmove 에서 2개 이상의 손가락을 동시에 움직일 때
+                    <p class="color-b">(index는 그냥 index일 뿐 처음 터치한 손가락이 뭔지, 두 번째 터치한 손가락이 뭔지를 알려주지는 않음.)</p>
+                </li>
+            </ul>
+            <h3>☑️ touch move 주의할점</h3>
+            <div class="touchmove">
+                <p>
+                    touchmove 는 touchstart 나 touchend 와 달리 일반적으로 브라우저가 처음부터 소유함. <br>
+                    따라서 최초 한 번은 발생하지만 그 이후는 브라우저의 스크롤이 가져가 버리게됌.
+                </p>
+                <p>
+                    만약 어떤 dom 에서 touchmove 이벤트를 사용하겠다는 뜻은 바꿔 말하면 <span class="bg-e">그 영역에서는 스크롤이 안일어나게 하겠다</span> 는 의미.
+                </p>
+                <p>
+                    따라서 touchmove 의 경우는 반드시 <span class="bg-e">e.preventDefault()</span> 를 호출하여 막아주지 않으면 제대로 작동 X
+                </p>
+                <p>
+                    <a href="https://www.bsidesoft.com/285" target="_blank" >터치이벤트 관련 자세히</a>
+                </p>
+            </div>
+        </div>
+        <div class="container">
+            <h2>📍 애니메이션</h2>
+            <ul>
+                <li><h3>1. 모바일웹은 제한된 크기로 화면을 숨겨두고 보여주기를 잘 해야함. 특히 화면 전환시에 애니메이션이 효과적</h3></li>
+                <li>
+                    <h3>2. CSS3 transform 속성 활용</h3> 
+                    <img class="pl-2" src="./img/screen4.jpg" alt="">
+                </li>
+                <li>
+                    <h3>3. JAVASCRIPT에서 css 속성 설정</h3> 
+                    <img class="pl-2" src="./img/screen5.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
