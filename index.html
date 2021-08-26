@@ -10,7 +10,7 @@
 <body>
     <div class="wrapper">
         <h1>✏️ 모바일 웹개발 </h1>
-        <div class="container">
+        <div class="list">
             <h2>📍 모바일 데스크탑 웹개발의 차이점들</h2>
             <ul class="pl-2 list-in">
                 <li>모바일웹의 JavaScript,HTML,CSS는 Desktop과 동일</li>
@@ -25,7 +25,35 @@
                 <li>마우스와 다르게 터치 가능</li>
             </ul>
         </div>
-        <div class="container">
+        <div class="list">
+            <h2>📍 Meta Tag</h2>
+            <ul class="pl-2 list-in">
+                <li class="list-no mb-no"><h3> [ Viewport ] </h3></li>
+                <li class="list-no"><img src="./img/screen6.jpg" alt=""></li>
+                <li>width=device-width : 페이지를 자동으로 사용자 디바이스 크기에 맞춤</li>
+                <li>initial-scale=1.0 : 페이지 로딩 시의 확대 비율</li>
+                <li>maximum-scale=1.0 : 허용가능한 확대비율의 최대치</li>
+                <li>minimum-scale=1.0 : 허용가능한 축소비율의 최대치</li>
+                <li>user-scalable=0 : 사용자 확대보기 유무 (yes==1, no==0)</li>
+            </ul>
+        </div>
+        <div class="list">
+            <h2>📍 CSS 화면전환시 텍스트 크기 고정</h2>
+            <ul class="pl-2 list-in">
+                <li class="list-no"><img src="./img/screen7.jpg" alt=""></li>
+                <li class="list-no">
+                    <div>
+                        만약 Webview에서 위 CSS를 줘도 안먹는다면,
+                        <img src="./img/screen8.jpg" alt="">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="list">
+            <h2>📍 클릭 하이라이트 제거</h2>
+            <div class="pl-2"><img src="./img/screen9.jpg" alt=""></div>
+        </div>
+        <div class="list">
             <h2>📍 사용자가 모바일로 접속했는지 알 수 있는 방법</h2>
             <ul>
                 <li>
@@ -49,11 +77,26 @@
                 </li>
                 <li>
                     <h3>3. navigator.userAgent로 모바일 기기 감지</h3>
-                    <a href="https://www.youtube.com/watch?v=1O13X68nrSs" target="_blank">https://www.youtube.com/watch?v=1O13X68nrSs</a>
+                    <div class="pl-2 mb-2">
+                        <h4>[ Device Check ]</h4>
+                        <img src="./img/screen10.jpg" alt="">
+                        <p class="box-bg ml-no color-b">
+                            new Array(
+                            &nbsp; 'iphone','ipod', 'ipad','android','blackberry', <br>
+                            &nbsp; 'windows ce','nokia','webos','opera mini', <br>
+                            &nbsp; 'sonyericsson','opera mobi','iemobile'
+                            )
+                        </p>
+                    </div>
+                    <div class="pl-2 mb-2">
+                        <h4>[ 주소창 없애기 ]</h4>
+                        <img src="./img/screen11.jpg" alt="">
+                    </div>
+                    <a class="pl-2" href="https://www.youtube.com/watch?v=1O13X68nrSs" target="_blank">https://www.youtube.com/watch?v=1O13X68nrSs</a>
                 </li>
             </ul>
         </div>
-        <div class="container touchevent">
+        <div class="list touchevent">
             <h2>📍 Touch Event</h2>
             <ul class="list-in">
                 <li>
@@ -107,7 +150,7 @@
                 </p>
             </div>
         </div>
-        <div class="container">
+        <div class="list">
             <h2>📍 애니메이션</h2>
             <ul>
                 <li><h3>1. 모바일웹은 제한된 크기로 화면을 숨겨두고 보여주기를 잘 해야함. 특히 화면 전환시에 애니메이션이 효과적</h3></li>
